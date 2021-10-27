@@ -1,0 +1,25 @@
+<div class="nav-bar-container">
+    <div class="icon">
+        <i class="fas fa-envelope"></i>
+    </div>
+    <div class="icon">
+        <i class="fas fa-bell"></i>
+    </div>
+    <div class="user" [matMenuTriggerFor]="beforeMenu">
+        <p>Mostapha benlagha</p>
+        <div class="avatar">
+            <img src="https://picsum.photos/400">
+        </div>
+        <i class="fas fa-chevron-down"></i>
+        <mat-menu #beforeMenu="matMenu" class="menu w-52" xPosition="before">
+            <button mat-menu-item>
+                <i class="fas fa-user mr-2"></i>
+                Profile
+            </button>
+            <button mat-menu-item><i class="fas fa-cogs mr-2"></i>
+              Settings
+            </button>
+        </mat-menu>
+    </div>
+
+</div>
