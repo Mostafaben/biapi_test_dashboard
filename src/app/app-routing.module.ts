@@ -13,19 +13,15 @@ const routes: Routes = [
           import("./modules/users-managements/users-managements.module").then(
             module => module.UsersManagementsModule
           )
-      },
-      {
-        path: "auth",
-        loadChildren: () =>
-          import("./modules/authentication/authentication.module").then(
-            module => module.AuthenticationModule
-          )
-      },
-      {
-        path: "**",
-        redirectTo: "dashboard"
       }
     ]
+  },
+  {
+    path: "auth",
+    loadChildren: () =>
+      import("./modules/authentication/authentication.module").then(
+        module => module.AuthenticationModule
+      )
   },
   {
     path: "**",
