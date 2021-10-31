@@ -1,0 +1,15 @@
+.mat-dialog-actions {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+button:nth-child(2) {
+    color: white;
+    background-color: blue;
+}
+
+button:last-child {
+    margin-left: var(--spacing);
+}

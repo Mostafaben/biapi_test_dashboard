@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { UsersManagementsService } from "src/app/shared/services/users-managements.service";
 import IUser from "src/app/shared/interfaces/user";
 import { UIService } from "src/app/shared/services/ui.service";
+import { CSVService } from "src/app/shared/services/csv.service";
 
 @Component({
   selector: "app-users-listings",
@@ -29,7 +30,8 @@ export class UsersListingsComponent implements OnInit {
 
   constructor(
     private _usersManagementsService: UsersManagementsService,
-    private _uiService: UIService
+    private _uiService: UIService,
+    private _CSVService: CSVService
   ) {}
 
   ngOnInit(): void {
@@ -54,19 +56,29 @@ export class UsersListingsComponent implements OnInit {
     this.filterUsersList(this.searchInputValue);
   }
 
-  filterUsersList(filter: string) {
-    this.usersList = this.usersList.filter(user => {
-      return (
-        user.firstName.match(this.searchInputValue) ||
-        user.lastName.match(this.searchInputValue)
-      );
-    });
-  }
-
   handleOrderByChange() {
     this.orderUsersListByAttribute(
       this.ORDER_ATTRIBUTES[this.selectedOrderListBy]
     );
+  }
+
+  handleChangePageSize() {
+    this.currentPage = 0;
+    this.fetchUsersData();
+  }
+
+  /**
+   * @param direction {NUMBER} if positive than next page
+   * else previous page
+   */
+  changePage(direction: number) {
+    if (direction > 0) {
+      this.currentPage++;
+    } else {
+      if (this.currentPage == 0) return;
+      this.currentPage--;
+    }
+    this.fetchUsersData();
   }
 
   orderUsersListByAttribute(attribute: string) {
@@ -77,9 +89,13 @@ export class UsersListingsComponent implements OnInit {
     });
   }
 
-  handleChangePageSize() {
-    this.currentPage = 0;
-    this.fetchUsersData();
+  filterUsersList(filter: string) {
+    this.usersList = this.usersList.filter(user => {
+      return (
+        user.firstName.match(this.searchInputValue) ||
+        user.lastName.match(this.searchInputValue)
+      );
+    });
   }
 
   fetchUsersData() {
@@ -114,19 +130,10 @@ export class UsersListingsComponent implements OnInit {
       });
   }
 
-  /**
-   *
-   * @param direction {NUMBER} if positive than next page
-   * else previous page
-   *
-   */
-  changePage(direction: number) {
-    if (direction > 0) {
-      this.currentPage++;
-    } else {
-      if (this.currentPage == 0) return;
-      this.currentPage--;
-    }
-    this.fetchUsersData();
+  handleDownloadData() {
+    const confirmDialog = this._uiService.openConfirmDialog();
+    confirmDialog.afterClosed().toPromise().then(data => {
+      if (data) this._CSVService.exportDataAsCSV(this.usersList);
+    });
   }
 }

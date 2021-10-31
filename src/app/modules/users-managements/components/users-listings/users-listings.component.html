@@ -7,7 +7,7 @@
             listing of all users existing in the system
         </p>
     </div>
-    <button class="button button-success">
+    <button class="button button-success" (click)="handleDownloadData()">
       <i class="fas fa-download"></i>
       <p>download</p>
     </button>
@@ -54,7 +54,7 @@
         </div>
         <div class="col font-bold">{{user.firstName}} {{user.lastName}}</div>
         <div class="col">
-            <span class="text-gray-500">Algeria Alger</span>
+            <span class="text-gray-500">Algiers, Algeria</span>
         </div>
         <div class="col text-center">
             <span class="tag">{{user.title}}</span>
