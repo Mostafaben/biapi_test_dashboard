@@ -32,14 +32,14 @@ body {
 
 @media only screen and (max-width: 600px) {
     .side-menu-container {
-        position: absolute !important;
-        z-index: 4;
+        // position: absolute !important;
+        z-index: 6;
     }
     .dashboard-page-container {
         margin-left: var(--side-menu-width) !important;
     }
     .nav-bar-container {
-        left: 100px !important;
+        left: 80px !important;
     }
 }
 
