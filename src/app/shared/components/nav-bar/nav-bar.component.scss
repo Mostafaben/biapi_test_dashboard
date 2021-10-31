@@ -1,10 +1,15 @@
 .nav-bar-container {
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    left: 300px;
     height: 80px;
     display: flex;
     align-items: center;
     justify-content: flex-end;
     border-bottom: 1px solid #ddd;
     background-color: white;
+    z-index: 5;
     i {
         color: var(--gray);
     }
@@ -51,5 +56,16 @@
                 border-radius: 42px;
             }
         }
+    }
+}
+
+.fullWidth {
+    left: 80px !important;
+}
+
+.mat-menu-item {
+    i {
+        color: var(--gray);
+        margin-right: calc(var(--spacing) * 2);
     }
 }

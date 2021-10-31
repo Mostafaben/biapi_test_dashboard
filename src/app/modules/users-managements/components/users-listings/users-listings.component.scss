@@ -1,0 +1,70 @@
+.page-header {
+    .button-success {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        i {
+            font-size: 12px;
+            margin-right: 16px;
+        }
+    }
+}
+
+.search-bar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px calc(var(--spacing) * 2);
+    margin-bottom: var(--spacing);
+    position: relative;
+    .search-input {
+        position: relative;
+        display: flex;
+        align-items: center;
+        input {
+            padding-left: 32px;
+        }
+        i {
+            position: absolute;
+            left: 8px;
+            color: var(--gray);
+        }
+    }
+    span {
+        margin-left: auto;
+        color: var(--gray);
+        margin-right: var(--spacing);
+    }
+}
+
+.pagination {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    padding: calc(var(--spacing) * 2);
+    span {
+        margin-right: calc(var(--spacing) * 2);
+        color: var(--gray);
+    }
+    p {
+        margin: 0px calc(var(--spacing) * 2);
+    }
+    .arrows {
+        button {
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            height: 40px;
+            width: 40px;
+            background-color: white;
+            i {
+                font-size: 14px;
+                color: var(--gray);
+                margin-bottom: 5px;
+            }
+            &:first-child {
+                margin-right: var(--spacing);
+            }
+        }
+    }
+}

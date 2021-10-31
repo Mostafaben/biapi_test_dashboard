@@ -1,1 +1,71 @@
-<p>users-listings works!</p>
+<div class="page-header">
+    <div>
+        <h1 class="page-title">
+            Users Listings
+        </h1>
+        <p class="page-subtitle">
+            listing of all users existing in the system
+        </p>
+    </div>
+    <button class="button button-success">
+      <i class="fas fa-plus"></i>
+      <p>Invite Users</p>
+    </button>
+</div>
+<div class="search-bar">
+    <div class="search-input">
+        <i class="fas fa-search"></i>
+        <input type="search" placeholder="Search for users">
+    </div>
+    <span>Sort by</span>
+    <select>
+      <option value="0">Name</option>
+      <option value="0">Name</option>
+    </select>
+    <div class="view-buttons">
+    </div>
+</div>
+<div class="row">
+    <div class="col col-12  col-md-6 col-lg-4 col-xl-3">
+        <app-user-card></app-user-card>
+
+    </div>
+    <div class="col col-12  col-md-6 col-lg-4 col-xl-3">
+        <app-user-card></app-user-card>
+
+    </div>
+    <div class="col col-12  col-md-6 col-lg-4 col-xl-3">
+        <app-user-card></app-user-card>
+
+    </div>
+    <div class="col col-12  col-md-6 col-lg-4 col-xl-3">
+        <app-user-card></app-user-card>
+
+    </div>
+    <div class="col col-12  col-md-6 col-lg-4 col-xl-3">
+        <app-user-card></app-user-card>
+
+    </div>
+</div>
+
+
+<div class="pagination">
+    <span>Show rows</span>
+    <select>
+      <option value="0">25</option>
+      <option value="0">50</option>
+      <option value="2">100</option>
+    </select>
+
+    <p>1-5 from 78</p>
+
+    <div class="arrows">
+        <button>
+        <i class="fas fa-chevron-left"></i>
+      </button>
+        <button>
+        <i class="fas fa-chevron-right"></i>
+      </button>
+    </div>
+
+</div>

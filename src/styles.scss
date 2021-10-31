@@ -2,8 +2,13 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 @import url('https://fonts.googleapis.com/css2?family=Cairo&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Zen+Kurenaido&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New&display=swap');
 * {
-    font-family: cairo;
+    // font-family: "Lato";
+    // font-family: 'Zen Kurenaido', sans-serif;
+    font-family: 'Zen Kaku Gothic New', sans-serif;
 }
 
 :root {
@@ -17,4 +22,63 @@
 
 body {
     background-color: var(--bg);
+}
+
+.row {
+    margin: 0px;
+    padding: var(--spacing);
+    max-width: 100%;
+}
+
+@media only screen and (max-width: 600px) {
+    .side-menu-container {
+        position: absolute !important;
+        z-index: 4;
+    }
+    .dashboard-page-container {
+        margin-left: var(--side-menu-width) !important;
+    }
+}
+
+.tag {
+    font-size: 12px;
+    background-color: #dbe0ea;
+    border-radius: 4px;
+    padding: 4px 8px;
+}
+
+.page-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: calc(var(--spacing) * 2);
+}
+
+.page-title {
+    font-size: 24px;
+}
+
+.page-subtitle {
+    color: var(--gray);
+}
+
+.button {
+    padding: 8px 16px;
+    border-radius: 4px;
+}
+
+.button-success {
+    background-color: var(--primary);
+    color: white;
+}
+
+select {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+input {
+    border: 1px solid #ddd !important;
+    border-radius: 4px !important;
 }

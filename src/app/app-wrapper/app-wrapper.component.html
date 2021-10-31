@@ -1,5 +1,5 @@
 <app-side-menu [isMinimized]="isSideMenuMinimized" (toggleSideMenu)="toggleSideMenu()"></app-side-menu>
+<app-nav-bar [isFullWidth]="isSideMenuMinimized"></app-nav-bar>
 <div class="dashboard-page-container" [class.dashboard-page-container-minimized]="isSideMenuMinimized">
-    <app-nav-bar></app-nav-bar>
     <router-outlet></router-outlet>
 </div>
