@@ -11,7 +11,7 @@ import { Observable } from "rxjs";
   providedIn: "root"
 })
 export class HttpInterceptorService implements HttpInterceptor {
-  private API_KEY = "61797b1eb8f7895ac0e556fa";
+  private _API_KEY = "61797b1eb8f7895ac0e556fa";
 
   constructor() {}
   intercept(
@@ -19,7 +19,7 @@ export class HttpInterceptorService implements HttpInterceptor {
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
     return next.handle(
-      request.clone({ setHeaders: { "app-id": this.API_KEY } })
+      request.clone({ setHeaders: { "app-id": this._API_KEY } })
     );
   }
 }

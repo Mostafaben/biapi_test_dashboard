@@ -13,6 +13,7 @@
 .search-bar {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     align-items: center;
     padding: 0px calc(var(--spacing) * 2);
     margin-bottom: var(--spacing);
@@ -55,6 +56,7 @@
 .pagination {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: flex-end;
     padding: calc(var(--spacing) * 2);
@@ -80,6 +82,57 @@
             &:first-child {
                 margin-right: var(--spacing);
             }
+            &:disabled {
+                background-color: whitesmoke;
+            }
+        }
+    }
+}
+
+.not-found {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: var(--gray);
+    height: 60vh;
+    i {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+}
+
+.table-card {
+    margin: 20px;
+    background-color: white;
+    min-width: 500px;
+    overflow: auto;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    .table-header {
+        border-bottom: 1px solid #ddd;
+        font-weight: bold;
+        color: var(--gray);
+        padding: 16px;
+    }
+    .table-item {
+        border-bottom: 1px solid #ddd;
+        cursor: pointer;
+        &:hover {
+            background-color: whitesmoke;
+        }
+        img {
+            border-radius: 4px;
+            height: 32px;
+            width: 32px;
+        }
+        .col {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+        &:last-child {
+            border: none;
         }
     }
 }

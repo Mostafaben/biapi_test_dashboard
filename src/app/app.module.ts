@@ -1,4 +1,3 @@
-import { HTTP_INTERCEPTORS } from "@angular/common/http";
 import { NgModule } from "@angular/core";
 import { MatMenuModule } from "@angular/material/menu";
 import { BrowserModule } from "@angular/platform-browser";
@@ -9,29 +8,27 @@ import { AppComponent } from "./app.component";
 import { NavBarComponent } from "./shared/components/nav-bar/nav-bar.component";
 import { SideMenuComponent } from "./shared/components/side-menu/side-menu.component";
 import { SharedModule } from "./shared/modules/shared.module";
-import { HttpInterceptorService } from "./shared/services/http-interceptor.service";
-
+import { MatDialogModule } from "@angular/material/dialog";
+import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
+import { LoadingDialogComponent } from "./shared/dialogs/loading-dialog/loading-dialog.component";
 @NgModule({
   declarations: [
     AppComponent,
     AppWrapperComponent,
     SideMenuComponent,
-    NavBarComponent
+    NavBarComponent,
+    LoadingDialogComponent
   ],
   imports: [
     BrowserModule,
     MatMenuModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    SharedModule
+    SharedModule,
+    MatDialogModule,
+    MatProgressSpinnerModule
   ],
-  providers: [
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: HttpInterceptorService,
-      multi: true
-    }
-  ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

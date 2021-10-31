@@ -8,20 +8,19 @@
         </p>
     </div>
     <button class="button button-success">
-      <i class="fas fa-plus"></i>
-      <p>Invite Users</p>
+      <i class="fas fa-download"></i>
+      <p>download</p>
     </button>
 </div>
 <div class="search-bar">
     <div class="search-input">
         <i class="fas fa-search"></i>
-        <input type="search" placeholder="Search for users" [(ngModel)]="searchInputValue" (ngModelChange)="handleSearchInputChange()">
+        <input type="search" placeholder="Search for users" [(ngModel)]="searchInputValue" (keydown.enter)="handleSearchInputEnter()" (ngModelChange)="handleSearchInputChange()">
     </div>
     <span>Sort by</span>
     <select [(ngModel)]="selectedOrderListBy" (ngModelChange)="handleOrderByChange()">
-      <option value="0">Non</option>
-      <option value="1">First Name</option>
-      <option value="2">Last Name</option>
+      <option value="0">First Name</option>
+      <option value="1">Last Name</option>
     </select>
     <div class="view-buttons">
         <button [class.selected-view-button]="isGridView" (click)="handleChangeView()">
@@ -32,41 +31,62 @@
         </button>
     </div>
 </div>
-<div class="row">
-    <div class="col col-12  col-md-6 col-lg-4 col-xl-3">
-        <app-user-card></app-user-card>
 
+
+<!-- RESULT NOT FOUND -->
+<div class="not-found" *ngIf="!isFetchingData && usersList.length == 0 && isGridView">
+    <i class="fas fa-search"></i>
+    <p>Nothing was found try again.</p>
+</div>
+<!-- LIST VIEW  -->
+
+<div class="table-card" *ngIf="!isGridView">
+    <div class="table-header row">
+        <div class="col col-1">picture</div>
+        <div class="col">Name</div>
+        <div class="col">Address</div>
+        <div class="col">Tags</div>
+        <div class="col">signed up at</div>
     </div>
-    <div class="col col-12  col-md-6 col-lg-4 col-xl-3">
-        <app-user-card></app-user-card>
-
+    <div class="table-item row" *ngFor="let user of usersList">
+        <div class="col col-1">
+            <img [src]="user.picture" alt="picture">
+        </div>
+        <div class="col font-bold">{{user.firstName}} {{user.lastName}}</div>
+        <div class="col">
+            <span class="text-gray-500">Algeria Alger</span>
+        </div>
+        <div class="col text-center">
+            <span class="tag">{{user.title}}</span>
+        </div>
+        <div class="col">{{ 1 | date:"short" }}</div>
     </div>
-    <div class="col col-12  col-md-6 col-lg-4 col-xl-3">
-        <app-user-card></app-user-card>
-
+    <div class="not-found" *ngIf="!isFetchingData && usersList.length == 0">
+        <i class="fas fa-search"></i>
+        <p>Nothing was found try again.</p>
     </div>
-    <div class="col col-12  col-md-6 col-lg-4 col-xl-3">
-        <app-user-card></app-user-card>
+</div>
 
-    </div>
-    <div class="col col-12  col-md-6 col-lg-4 col-xl-3">
-        <app-user-card></app-user-card>
 
+<!-- GRID VIEW -->
+<div class="row" *ngIf="isGridView">
+    <div class="col col-12  col-md-6 col-lg-4 col-xl-3" *ngFor="let user of usersList">
+        <app-user-card [user]="user"></app-user-card>
     </div>
 </div>
 
 
 <div class="pagination">
     <span>Show rows</span>
-    <select [(ngModel)]="selectedListPageSize">
+    <select [(ngModel)]="selectedListPageSize" (ngModelChange)="handleChangePageSize()">
       <option [value]="i" *ngFor="let item of LIST_ITEM_SIZES; let i = index">{{item}}</option>
     </select>
-    <p>1-5 from 78</p>
+    <p>{{ (currentPage + 1) + " from total " + totalPages }}</p>
     <div class="arrows">
-        <button (click)="changePage(-1)">
+        <button (click)="changePage(-1)" [disabled]="currentPage == 0">
         <i class="fas fa-chevron-left"></i>
       </button>
-        <button (click)="changePage(1)">
+        <button (click)="changePage(1)" [disabled]="currentPage == (totalPages - 1)">
         <i class="fas fa-chevron-right"></i>
       </button>
     </div>

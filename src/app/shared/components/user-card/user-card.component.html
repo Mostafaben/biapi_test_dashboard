@@ -1,8 +1,8 @@
-<div class="user-card-container">
+<div class="user-card-container" *ngIf="user">
     <div class="user-card-content">
-        <img src="https://picsum.photos/400" alt="avatar">
-        <h3>Mostapha benlagha</h3>
-        <p>Algiers, Algeria</p>
+        <img [src]="user.picture" alt="avatar">
+        <h3>{{user.firstName}} {{user.lastName}}</h3>
+        <p>{{user.title}}</p>
         <div class="tags">
             <span class="tag">
                 Cooking
