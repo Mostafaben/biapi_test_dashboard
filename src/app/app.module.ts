@@ -11,7 +11,8 @@ import { SharedModule } from "./shared/modules/shared.module";
 import { MatDialogModule } from "@angular/material/dialog";
 import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 import { LoadingDialogComponent } from "./shared/dialogs/loading-dialog/loading-dialog.component";
-import { ConfirmDialogComponent } from './shared/dialogs/confirm-dialog/confirm-dialog.component';
+import { ConfirmDialogComponent } from "./shared/dialogs/confirm-dialog/confirm-dialog.component";
+import { RouterModule } from "@angular/router";
 @NgModule({
   declarations: [
     AppComponent,
