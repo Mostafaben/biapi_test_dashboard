@@ -1,3 +1,4 @@
+import { HTTP_INTERCEPTORS } from "@angular/common/http";
 import { NgModule } from "@angular/core";
 import { MatMenuModule } from "@angular/material/menu";
 import { BrowserModule } from "@angular/platform-browser";
@@ -8,6 +9,7 @@ import { AppComponent } from "./app.component";
 import { NavBarComponent } from "./shared/components/nav-bar/nav-bar.component";
 import { SideMenuComponent } from "./shared/components/side-menu/side-menu.component";
 import { SharedModule } from "./shared/modules/shared.module";
+import { HttpInterceptorService } from "./shared/services/http-interceptor.service";
 
 @NgModule({
   declarations: [
@@ -23,7 +25,13 @@ import { SharedModule } from "./shared/modules/shared.module";
     BrowserAnimationsModule,
     SharedModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpInterceptorService,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
