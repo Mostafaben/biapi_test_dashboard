@@ -141,6 +141,11 @@
     select {
         margin: 10px 0px;
     }
+    .search-input {
+        input {
+            max-width: 240px;
+        }
+    }
     .table-header,
     .table-item {
         .col:nth-child(1) {
