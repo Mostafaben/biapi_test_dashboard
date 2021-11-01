@@ -88,12 +88,18 @@ export class UsersListingsComponent implements OnInit {
       return name1 > name2 ? 1 : -1;
     });
   }
-
+  /**
+   * @param filter {STRING}
+   * filter users list according to the search input value
+   * added lowercase to insure the match
+   */
   filterUsersList(filter: string) {
     this.usersList = this.usersList.filter(user => {
       return (
-        user.firstName.match(this.searchInputValue) ||
-        user.lastName.match(this.searchInputValue)
+        user.firstName
+          .toLowerCase()
+          .match(this.searchInputValue.toLowerCase()) ||
+        user.lastName.toLowerCase().match(this.searchInputValue.toLowerCase())
       );
     });
   }
