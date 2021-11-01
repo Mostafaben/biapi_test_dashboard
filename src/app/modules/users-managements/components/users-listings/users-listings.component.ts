@@ -17,7 +17,7 @@ export class UsersListingsComponent implements OnInit {
    * GRID VIEW: true
    * @default GRID_VIEW
    */
-  public isGridView: boolean = false;
+  public isGridView: boolean = true;
   public searchInputValue: string = "";
   public LIST_ITEM_SIZES: number[] = [25, 50, 100];
   public selectedListPageSize: number = 0;
